@@ -1,0 +1,9 @@
+1. Как в примере сервера proto_filr пересылать файл по частям и надо ли это?
+2. Произойдет ли ошибка кеширования из примера file transfer -> cashing error если использовать не сериализацию, а протокольную отправку?
+3. Для чего в примере proto_file в классе Network создается метод
+public static Network getInstance() {
+        return thisNetwork;
+    }
+а потом вызывается из ProtoClient - Network.getInstance().start(networkStarter);
+
+Почему нельзя сделать метод start() статическим и вызвать просто  Network.start(networkStarter) ?

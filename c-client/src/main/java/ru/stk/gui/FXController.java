@@ -5,20 +5,40 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import ru.stk.client.Model;
+import ru.stk.client.Client;
+
+import java.io.IOException;
 
 public class FXController {
     Stage curStage;
     Scene mainScene;
     FileChooser fileChooser = new FileChooser();
-    Model model = new Model();
+    Client client = new Client();
+
+    @FXML
+    public void setCurStage(Stage stage){
+
+        curStage = stage;
+    }
+
+    @FXML
+    public void setMainScene(Scene scene){
+        mainScene = scene;
+    }
 
     @FXML
     private void login (ActionEvent event){
-        //curStage.setScene(mainScene);
-        Window curWindow = curStage.getOwner();
-        fileChooser.showOpenDialog(curWindow);
+        try{
+            client.connect();
+        }
+        catch(InterruptedException | IOException e){
+            /* TODO: Handle this exception, write log, inform user */
+            e.printStackTrace();
+        };
+
+        curStage.setScene(mainScene);
+        //Window curWindow = curStage.getOwner();
+        //fileChooser.showOpenDialog(curWindow);
     }
 
     @FXML
@@ -26,13 +46,10 @@ public class FXController {
         System.exit(0);
     }
 
-    public void setCurStage(Stage stage){
-        curStage = stage;
-    }
-
-    public void setMainScene(Scene scene){
-        mainScene = scene;
+    @FXML
+    private void uploadFile (ActionEvent event) {
 
     }
+
 
 }
