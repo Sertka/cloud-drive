@@ -26,6 +26,7 @@ public class MainApp extends Application {
         //create and initialize controller
         FXController controller = loader.getController();
         controller.setCurStage(primaryStage);
+
         //create main scene
         FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent rootMain = loaderMain.load();

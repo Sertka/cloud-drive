@@ -9,9 +9,9 @@
    <children>
       <Button id="connectButton" layoutX="272.0" layoutY="300.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="106.0" text="Подключение" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <Button id="cancelButton" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#exit" prefHeight="27.0" prefWidth="106.0" text="Отмена" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
-      <Label layoutX="82.0" layoutY="101.0" text="Логин:" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="101.0" />
-      <Label layoutX="82.0" layoutY="164.0" text="Пароль:" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="164.0" />
-      <TextField layoutX="80.0" layoutY="122.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="122.0" />
-      <TextField layoutX="80.0" layoutY="185.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="185.0" />
+      <Label id="loginLbl" layoutX="82.0" layoutY="101.0" text="Логин:" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="101.0" />
+      <Label id="passLbl" layoutX="82.0" layoutY="164.0" text="Пароль:" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="164.0" />
+      <TextField fx:id="loginTFiled" layoutX="80.0" layoutY="122.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="122.0" />
+      <TextField fx:id="passTFiled" layoutX="80.0" layoutY="185.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="185.0" />
    </children>
 </AnchorPane>
