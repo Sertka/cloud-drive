@@ -1,10 +1,17 @@
 package ru.stk.server;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import javafx.stage.Stage;
+import ru.stk.common.FileSender;
+import ru.stk.common.MsgLib;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Class Handler uses Netty functionality to establish connections with clients and
@@ -12,53 +19,106 @@ import java.io.*;
  */
 
 public class MainHandler extends ChannelInboundHandlerAdapter {
+
     /*Defines current stage in communication with client */
-    public enum State {
-        IDLE, NAME_LEN, NAME, FILE_LEN, FILE
+    private enum State {
+        IDLE,
+        NAME_LEN, NAME, FILE_LEN, FILE,
+        LOGIN_LEN, LOGIN, PASS_LEN, PASS
     }
 
     private State curState = State.IDLE;
-    private int newFileLength;
+    private int fileNameLength;
     private long fileLength;
     private long inFileLength;
+    private int loginLength;
+    private int passLength;
+    private String login;
+    private String pass;
+
     private BufferedOutputStream fileSaveStream;
+    private byte[] msgBytes = new byte[MsgLib.MSG_LEN];
+    private String msgString = "";
 
     @Override
     public void channelRead (ChannelHandlerContext ctx, Object msg) throws IOException {
         ByteBuf buf = ((ByteBuf) msg);
-        while (buf.readableBytes() > 0) {
+        curState = State.IDLE;
 
-            /* Check if client wants to send new file - first byte = 25 */
-            /* TODO: Here call of different commands - Cmd and FileService */
-            if (curState == State.IDLE) {
-                byte read = buf.readByte();
-                if (read == (byte) 25) {
-                    curState = State.NAME_LEN;
-                    inFileLength = 0L;
-                    System.out.println("STATE: Start file receiving");
-                } else {
-                    System.out.println("ERROR: Invalid first byte - " + read);
+        while (buf.readableBytes() > 0) {
+            /* TODO: Here establish call of different commands - Cmd and FileService */
+
+            if (curState == State.IDLE){
+                buf.readBytes(msgBytes);
+                msgString = new String(msgBytes, "UTF-8");
+            }
+            /* Receive command of the incoming login and password - ATH means authorisation data */
+            if (curState == State.IDLE & msgString.equals("ATH")){
+                curState = State.LOGIN_LEN;
+                inFileLength = 0L;
+                System.out.println("STATE: Start auth receiving");
+            } /* Receive length of a login */
+            else if (curState == State.LOGIN_LEN) {
+                if (buf.readableBytes() >= 4) {
+                    System.out.println("STATE: Get login length");
+                    loginLength = buf.readInt();
+                    curState = State.LOGIN;
+                } /* Receive login */
+            } else if (curState == State.LOGIN) {
+                if (buf.readableBytes() >= loginLength) {
+                    System.out.print("STATE: Get login: ");
+                    byte[] loginBytes = new byte[loginLength];
+                    buf.readBytes(loginBytes);
+                    login = new String(loginBytes, "UTF-8");
+                    System.out.println(login);
+                    curState = State.PASS_LEN;
+                } /* Receive length of a password */
+            } else if (curState == State.PASS_LEN) {
+                if (buf.readableBytes() >= 4) {
+                    System.out.println("STATE: Get pass length");
+                    passLength = buf.readInt();
+                    curState = State.PASS;
                 }
+            } /* Receive password */ else if (curState == State.PASS) {
+                if (buf.readableBytes() >= passLength) {
+                    System.out.print("STATE: Get pass: ");
+                    byte[] passBytes = new byte[passLength];
+                    buf.readBytes(passBytes);
+                    pass = new String(passBytes, "UTF-8");
+                    System.out.println(pass);
+                    curState = State.IDLE;
+                    ctx.writeAndFlush("server.txt");
+                }
+            }
+
+
+
+            /* Receive command of the incoming new file - FLE means a file */
+            if (curState == State.IDLE & msgString.equals("FLE")) {
+                //buf.readBytes(msgBytes);
+                //msgString = new String(msgBytes, "UTF-8");
+                curState = State.NAME_LEN;
+                inFileLength = 0L;
+                System.out.println("STATE: Start file receiving");
             }
 
             /* Receive length of a new file name */
             if (curState == State.NAME_LEN) {
                 if (buf.readableBytes() >= 4) {
                     System.out.println("STATE: Get filename length");
-                    newFileLength = buf.readInt();
+                    fileNameLength = buf.readInt();
                     curState = State.NAME;
                 }
             }
 
-            /* Create a new file in user's directory */
-            /*TODO: Put the file to the valid directory of the user */
-            /*TODO: Add error messages to the user and log for all blocks */
+            /* Receive file name and create a new file in user's directory */
             if (curState == State.NAME) {
-                if (buf.readableBytes() >= newFileLength) {
-                    byte[] fileName = new byte[newFileLength];
+                if (buf.readableBytes() >= fileNameLength) {
+                    byte[] fileName = new byte[fileNameLength];
                     buf.readBytes(fileName);
                     System.out.println("STATE: Filename received - _" + new String(fileName, "UTF-8"));
-                    fileSaveStream = new BufferedOutputStream(new FileOutputStream("_" + new String(fileName)));
+                    fileSaveStream = new BufferedOutputStream
+                            (new FileOutputStream("_" + new String(fileName)));
                     curState = State.FILE_LEN;
                 }
             }
@@ -72,6 +132,8 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
 
+            /*TODO: Put the file to the valid directory of the user */
+            /*TODO: Add error messages to the user and log for all blocks */
             /* Receive and save content of the file */
             if (curState == State.FILE) {
                 while (buf.readableBytes() > 0) {
@@ -83,14 +145,17 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                         fileSaveStream.close();
                         break;
                     }
+
                 }
             }
-        }
 
-        if (buf.readableBytes() == 0) {
-            buf.release();
+            if (buf.readableBytes() == 0) {
+                buf.release();
+            }
         }
+        ctx.writeAndFlush("server.txt");
     }
+
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {

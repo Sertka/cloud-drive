@@ -1,6 +1,7 @@
 package ru.stk.server;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
@@ -8,8 +9,12 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Server {
+
     public void run() throws Exception {
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
@@ -19,9 +24,10 @@ public class Server {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new MainHandler());
+                            ch.pipeline().addLast( new OutHandler(), new MainHandler());
                         }
                     });
+
             ChannelFuture f = b.bind(8190).sync();
             f.channel().closeFuture().sync();
         } finally {

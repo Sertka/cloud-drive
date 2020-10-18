@@ -10,8 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>c-server</artifactId>
-
-
+    <dependencies>
+        <dependency>
+            <groupId>ru.stk.cloud-drive</groupId>
+            <artifactId>c-common</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>
