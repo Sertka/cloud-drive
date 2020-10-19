@@ -23,8 +23,10 @@ public class OutHandler extends ChannelOutboundHandlerAdapter {
         ByteBuf buf = ctx.alloc().buffer(arr.length);
         buf.writeBytes(arr);
         ctx.writeAndFlush(buf);*/
+        String file;
+        file = msg.toString();
 
-       FileSender.sendFile(Paths.get("server.txt"), null, ctx, new ChannelFutureListener() {
+       FileSender.sendFile(Paths.get(file), null, ctx, new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
                 if (!future.isSuccess()) {
@@ -34,10 +36,11 @@ public class OutHandler extends ChannelOutboundHandlerAdapter {
                     System.out.println("Файл успешно передан клиенту");
 
                 }
-
             }
         });
 
     }
+
+
 
 }

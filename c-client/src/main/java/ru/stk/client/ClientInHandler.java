@@ -27,7 +27,6 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws IOException {
         ByteBuf buf = ((ByteBuf) msg);
-        curState = State.IDLE;
 
         while (buf.readableBytes() > 0) {
             /* TODO: Here establish call of different commands - Cmd and FileService */
@@ -88,11 +87,8 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                         break;
                     }
                 }
-                curState = State.IDLE;
             }
-
         }
-
         if (buf.readableBytes() == 0) {
             buf.release();
         }

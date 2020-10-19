@@ -31,6 +31,7 @@ public class Client {
                 Network.getInstance().start(networkStarter);
             }
         }).start();
+        /* Waiting for connection to avoid early file sending */
         networkStarter.await();
 
     }
