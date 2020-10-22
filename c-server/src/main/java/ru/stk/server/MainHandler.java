@@ -32,6 +32,8 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
     private int passLength;
     private String login;
     private String pass;
+    private String userPath;
+    private File f;
 
     private BufferedOutputStream fileSaveStream;
     private byte[] msgBytes = new byte[MsgLib.MSG_LEN];
@@ -40,7 +42,6 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead (ChannelHandlerContext ctx, Object msg) throws IOException {
         ByteBuf buf = ((ByteBuf) msg);
-        curState = State.IDLE;
 
         while (buf.readableBytes() > 0) {
             /* TODO: Here establish call of different commands - Cmd and FileService */
@@ -84,6 +85,18 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     pass = new String(passBytes, "UTF-8");
                     System.out.println(pass);
                     curState = State.IDLE;
+
+                    /** check user credentials and save user folder */
+                    String authResult = CmdService.clientLogin(login, pass);
+                    if (authResult.equals("")) {
+                        System.out.println("Authorisation failed");
+                    }else {
+                        userPath = authResult;
+                    }
+
+                    File f = CmdService.getFolderContent(userPath, login);
+                    ctx.writeAndFlush(f);
+
                 }
             }
 
@@ -114,7 +127,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     buf.readBytes(fileName);
                     System.out.println("STATE: Filename received - _" + new String(fileName, "UTF-8"));
                     fileSaveStream = new BufferedOutputStream
-                            (new FileOutputStream("_" + new String(fileName)));
+                            (new FileOutputStream(userPath + new String(fileName)));
                     curState = State.FILE_LEN;
                 }
             }
@@ -139,6 +152,9 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                         curState = State.IDLE;
                         System.out.println("File received and saved");
                         fileSaveStream.close();
+
+                        File f = CmdService.getFolderContent(userPath, login);
+                        ctx.writeAndFlush(f);
                         break;
                     }
 
@@ -148,7 +164,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 buf.release();
             }
         }
-        ctx.writeAndFlush("HW04_CodeReview_S.Tkachev_Questions.txt");
+
     }
 
     @Override

@@ -5,16 +5,20 @@ import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import ru.stk.common.FileSender;
 import ru.stk.common.MsgLib;
+import ru.stk.common.Settings;
+import ru.stk.gui.MainFxCtl;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
+
+import static javafx.collections.FXCollections.observableArrayList;
 
 /**
  * Class performs all communications with server
@@ -22,13 +26,18 @@ import java.util.concurrent.CountDownLatch;
  * @author    Sergei Tkachev
  */
 public class Client {
+    private static String userLogin;
 
-    public void connect() throws InterruptedException {
+    public static String getLogin(){
+        return userLogin;
+    }
+
+    public void connect(MainFxCtl fxc) throws InterruptedException {
         CountDownLatch networkStarter = new CountDownLatch(1);
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Network.getInstance().start(networkStarter);
+                Network.getInstance().start(networkStarter, fxc);
             }
         }).start();
         /* Waiting for connection to avoid early file sending */
@@ -55,6 +64,7 @@ public class Client {
     }
 
     public void authClient (String login, String pass){
+        userLogin = login;
 
         ByteBuf buf = null;
 
@@ -71,6 +81,22 @@ public class Client {
         /*Send pass */
         sendString(pass);
     }
+
+    public static ObservableList<UserFile> prepareFileList() throws IOException {
+        String[] tmp;
+        ObservableList<UserFile> files = FXCollections.observableArrayList();
+
+        File file  = Paths.get(Settings.C_FOLDER + "/" + userLogin + ".tmp").toFile();
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line = reader.readLine();
+        while (line != null) {
+            tmp = line.split(MsgLib.DELIMITER);
+            files.add(new UserFile(tmp[0], tmp[1] + " " + tmp[2], tmp[3] + " " + tmp[4]));
+            line = reader.readLine();
+        }
+        return files;
+    }
+
 
     /**
      * Sends incoming string to server
@@ -94,4 +120,7 @@ public class Client {
         Channel channel = Network.getInstance().getCurrentChannel();
         channel.writeAndFlush(buf);
     }
+
+
+
 }

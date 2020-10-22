@@ -11,11 +11,11 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.CountDownLatch;
+import ru.stk.common.Settings;
+import ru.stk.gui.MainFxCtl;
 
 public class Network {
 
-    private Network() {
-    }
 
     private static final Network thisNetwork = new Network();
 
@@ -24,28 +24,22 @@ public class Network {
     }
 
     private Channel curChannel;
-
     public Channel getCurrentChannel() {
         return curChannel;
     }
 
-    //private ClientOutHandler clientOutHandler = new ClientOutHandler();
 
-    //public ClientOutHandler getOutHandler() {
-    //    return clientOutHandler;
-   // }
-
-    public void start(CountDownLatch countDownLatch) {
+    public void start(CountDownLatch countDownLatch, MainFxCtl fxc) {
         EventLoopGroup clientGroup = new NioEventLoopGroup();
         try {
             Bootstrap cBootstrap = new Bootstrap();
 
             cBootstrap.group(clientGroup)
                     .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress("localhost", 8190))
+                    .remoteAddress(new InetSocketAddress("localhost", Settings.PORT))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new ClientInHandler());
+                            socketChannel.pipeline().addLast(new ClientInHandler(fxc));
                             curChannel = socketChannel;
                         }
                     });

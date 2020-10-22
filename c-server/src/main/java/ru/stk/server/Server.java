@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import ru.stk.common.Settings;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -28,7 +29,7 @@ public class Server {
                         }
                     });
 
-            ChannelFuture f = b.bind(8190).sync();
+            ChannelFuture f = b.bind(Settings.PORT).sync();
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();
