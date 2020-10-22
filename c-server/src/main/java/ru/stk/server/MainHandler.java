@@ -1,10 +1,7 @@
 package ru.stk.server;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.*;
 import javafx.stage.Stage;
 import ru.stk.common.FileSender;
 import ru.stk.common.MsgLib;
@@ -87,7 +84,6 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     pass = new String(passBytes, "UTF-8");
                     System.out.println(pass);
                     curState = State.IDLE;
-                    ctx.writeAndFlush("server.txt");
                 }
             }
 
@@ -148,14 +144,12 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
 
                 }
             }
-
             if (buf.readableBytes() == 0) {
                 buf.release();
             }
         }
-        ctx.writeAndFlush("server.txt");
+        ctx.writeAndFlush("HW04_CodeReview_S.Tkachev_Questions.txt");
     }
-
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
