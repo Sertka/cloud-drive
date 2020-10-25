@@ -11,23 +11,26 @@ import java.util.Objects;
 
 public class CmdService {
 
+public static String userLogin;
 
+    public static String clientLogin(String login, String pass, AuthController authCtl) {
 
-    public static String clientLogin(String login, String pass) {
-        if (login.equals("Serge") & pass.equals("Serge7")) {
-            String path = Settings.S_FOLDER + "/" + login;
+        boolean authRes = authCtl.checkUser(login, pass);
+        if (authRes) {
+            String path = Settings.S_FOLDER + "/" + login + "/";
             File folder = new File(path);
             if (!folder.exists()) {
                 if (!folder.mkdir()) {
                     /*todo: make an exception */
                     System.out.println("Not possible to create a client folder");
-
+                    return "FOLDER_ERR";
                 }
             } else {
-                return path + "/";
+                userLogin = login;
+                return path;
             }
         }
-        return "";
+        return "AUTH_FAILED";
     }
 
     /**
@@ -42,10 +45,11 @@ public class CmdService {
         File dir = new File(userFolder);
         File tmp = new File (login + ".tmp");
 
-        if (!dir.isDirectory()){
+        if (!dir.isDirectory() || Objects.requireNonNull(dir.listFiles()).length == 0){
             System.out.println("Not possible to find user folder on server");
             return null;
         }
+
 
         fileWriter = new FileWriter(tmp);
         for (File item : Objects.requireNonNull(dir.listFiles())) {
@@ -59,16 +63,23 @@ public class CmdService {
                 SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
 
                 String strFile = item.getName() + MsgLib.DELIMITER + fileSize + MsgLib.DELIMITER
-                        + formatDate.format(item.lastModified()) ;
-                System.out.println(strFile);
+                        + formatDate.format(item.lastModified()) + MsgLib.DELIMITER + item.length()/(1024) ;
 
                 fileWriter.write(strFile + System.getProperty("line.separator"));
             }
         }
         fileWriter.close();
         return tmp;
-
     }
 
+    public static boolean renameFile (String oldName, String newName, String login){
+        File oldFile = Paths.get(Settings.S_FOLDER + "/" + login + "/" + oldName).toFile();
+        File newFile = Paths.get(Settings.S_FOLDER + "/" + login + "/" + newName).toFile();
+        return  oldFile.renameTo(newFile);
+    }
 
+    public static boolean deleteFile (String delName){
+        File delFile = Paths.get(Settings.S_FOLDER + "/" + userLogin + "/" + delName).toFile();
+        return  delFile.delete();
+    }
 }

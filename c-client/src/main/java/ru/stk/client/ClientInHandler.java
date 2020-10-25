@@ -10,6 +10,7 @@ import ru.stk.gui.MainFxCtl;
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class ClientInHandler extends ChannelInboundHandlerAdapter {
     /*Defines current stage in communication with client */
@@ -22,10 +23,10 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
     private long fileLength;
     private long inFileLength;
     private BufferedOutputStream fileSaveStream;
-    private byte[] msgBytes = new byte[MsgLib.MSG_LEN];
+    private final byte[] msgBytes = new byte[MsgLib.MSG_LEN];
     private String msgString = "";
     private String fileName;
-    private MainFxCtl fxc;
+    private final MainFxCtl fxc;
 
     public ClientInHandler (MainFxCtl fxc){
         this.fxc = fxc;
@@ -40,8 +41,15 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
 
             if (curState == State.IDLE) {
                 buf.readBytes(msgBytes);
-                msgString = new String(msgBytes, "UTF-8");
+                msgString = new String(msgBytes, StandardCharsets.UTF_8);
             }
+
+            /* Receive command of the empty user directory - EMP means "empty" */
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.EMP.toString())) {
+                fxc.fillFileTable(null);
+                System.out.println("Empty user storage detected");
+            }
+
 
             /* Receive command of the incoming new file - FLE means a file */
             if (curState == State.IDLE & msgString.equals("FLE")) {
@@ -64,7 +72,7 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] fileByte = new byte[fileNameLength];
                     buf.readBytes(fileByte);
-                    System.out.println("STATE: Filename received - " + new String(fileByte, "UTF-8"));
+                    System.out.println("STATE: Filename received - " + new String(fileByte, StandardCharsets.UTF_8));
                     fileName = new String(fileByte);
                     fileSaveStream = new BufferedOutputStream
                             (new FileOutputStream(Settings.C_FOLDER + "/" +fileName));
@@ -77,6 +85,10 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                 if (buf.readableBytes() >= 8) {
                     fileLength = buf.readLong();
                     System.out.println("STATE: File length received - " + fileLength);
+            /*        if (fileLength == 0) {
+                        curState = State.IDLE;
+                        break;
+                    }*/
                     curState = State.FILE;
                 }
             }

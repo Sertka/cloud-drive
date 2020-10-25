@@ -1,0 +1,30 @@
+В классе client в методе deleteFile я вывожу диалоговое окно и спрашиваю подтверждение удаления.
+Почему-то, в редких случаях, удаляется не один, а сразу два файла. Подозрение на javafx.alert. Если
+его отключить, то удаление проходит нормально.
+В чем может быть проблема? Может я неправильно его использую или конструкция if (result.isPresent()) неверна?
+
+
+ public static void deleteFile (String fileName) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("cloud.drive");
+        alert.setHeaderText("Удаление файла");
+        alert.setContentText("Вы уверены, что хотите удалить файл" + fileName);
+
+        alert.initOwner(mainScene.getWindow());
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
+
+                ByteBuf buf = null;
+                //Sends command to delete the file - DEL
+                byte[] msgBytes = MsgLib.MsgType.DEL.toString().getBytes(StandardCharsets.UTF_8);
+                buf = ByteBufAllocator.DEFAULT.directBuffer(msgBytes.length);
+                buf.writeBytes(msgBytes);
+                send(buf);
+
+                //send old file name
+                sendString(fileName);
+            }
+        }
+    }
