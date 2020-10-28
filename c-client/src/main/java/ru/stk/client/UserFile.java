@@ -1,5 +1,7 @@
 package ru.stk.client;
-
+/**
+ * User file information. Is used to fill in file list on the main form
+ */
 public class UserFile {
     private String name;
     private String size;

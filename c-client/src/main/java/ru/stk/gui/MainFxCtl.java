@@ -3,6 +3,7 @@ package ru.stk.gui;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,6 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.stage.WindowEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.client.Client;
 import ru.stk.client.UserFile;
 
@@ -20,11 +24,21 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
-public class MainFxCtl {
-    private final FileChooser fileChooser = new FileChooser();
-    private Stage curStage;
-    private UserFile selectedFile;
+/**
+ * Main form controller
+ */
 
+public class MainFxCtl {
+    private Stage curStage;         // application stage
+    private  Scene mainScene;       // scene of main form
+    private UserFile selectedFile;  //selected file in a list
+    private final String FILE_SEND_ERROR = "Невозможно отправить файл";
+    private final String FILE_RENAME_ERROR = "Возникла ошибка при переименовании файла, попробуйте еще раз";
+    private final String FILE_DELETE_ERROR = "Возникла ошибка при удалении файла";
+    private final String FILE_DOWNLOAD_INFO = "Файл сохранен на локальном диске";
+
+    private final FileChooser fileChooser = new FileChooser();
+    private static final Logger logger = LogManager.getLogger(Client.class);
 
     @FXML
     private Button renameButton;
@@ -36,7 +50,6 @@ public class MainFxCtl {
     private Label lblTotalFiles;
     @FXML
     private Label lblTotalSize;
-
 
     @FXML
     private TableView<UserFile> tbvFiles;
@@ -51,18 +64,17 @@ public class MainFxCtl {
     public void setCurStage(Stage stage){
         curStage = stage;
         disableButtons();
+
+        curStage.setOnCloseRequest(event -> System.exit(0));
     }
 
-/*    public void setMainScene(Scene scene){
+    public void setMainScene(Scene scene){
         mainScene = scene;
-    }*/
+    }
 
-
-    /**
-     * Fills in table with user files
-     * @param list
+    /*
+     * Fills in table with user's files
      */
-
     public void fillFileTable (ObservableList<UserFile> list){
 
         if (list == null){
@@ -80,11 +92,15 @@ public class MainFxCtl {
         clnFileDate.setStyle( "-fx-alignment: CENTER-RIGHT;");
         tbvFiles.setItems(list);
 
+        // fill in "total" counters
         Platform.runLater(() -> lblTotalSize.setText(Client.getFolderSize()));
         Platform.runLater(() -> lblTotalFiles.setText(Client.getFolderCount()));
 
     }
 
+    /*
+     * If user has selected a file
+     */
     @FXML
     private void rowChanged(){
         int row;
@@ -93,11 +109,17 @@ public class MainFxCtl {
         enableButtons();
     }
 
+    /*
+     * Button "download" is pressed
+     */
     @FXML
     private void downloadFile(){
         Client.downloadFile(selectedFile.getName());
     }
 
+    /*
+     * Button "rename" is pressed
+     */
     @FXML
     private void renameFile(){
         int row;
@@ -106,6 +128,9 @@ public class MainFxCtl {
         Client.renameFile(fileName);
     }
 
+    /*
+     * Button "delete" is pressed
+     */
     @FXML
     private void deleteFile(){
         int row;
@@ -113,6 +138,10 @@ public class MainFxCtl {
         selectedFile = tbvFiles.getItems().get(row);
         Client.deleteFile(selectedFile.getName());
     }
+
+    /*
+     * Button "upload" is pressed
+     */
     @FXML
     private void uploadFile (ActionEvent event) {
 
@@ -121,17 +150,27 @@ public class MainFxCtl {
 
         File file = fileChooser.showOpenDialog(curWindow);
 
-
         try{
             if (file != null) {
-                System.out.println(file.getName());
                 Client.sendClientFile(Paths.get(file.getPath()));
             }
         }
         catch(IOException e){
-            /* TODO: Handle this exception, write log, inform user */
-            e.printStackTrace();
+            logger.error("File sending failure - " + e.getMessage());
+            Platform.runLater(() -> MsgBox.showErrorMsg(mainScene, FILE_SEND_ERROR));
         };
+    }
+
+    public void renameFailed(){
+        Platform.runLater(() -> MsgBox.showErrorMsg(mainScene, FILE_RENAME_ERROR));
+    }
+
+    public void fileDownloaded(){
+        Platform.runLater(() -> MsgBox.showInfoMsg(mainScene, FILE_DOWNLOAD_INFO));
+    }
+
+    public void deleteFailed(){
+        Platform.runLater(() -> MsgBox.showErrorMsg(mainScene, FILE_DELETE_ERROR));
     }
 
     public void disableButtons() {
@@ -145,11 +184,4 @@ public class MainFxCtl {
         deleteButton.setDisable(false);
         downloadButton.setDisable(false);
     }
-
-
-    @FXML
-    private void exit (ActionEvent event){
-        System.exit(0);
-    }
-
 }

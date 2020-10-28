@@ -1,13 +1,16 @@
 package ru.stk.data;
 
+/**
+ * Stores user data
+ */
 public class User {
 
-    private String login;
-    private String pass;
-    private String firstname;
-    private String lastname;
+    private final String login;
+    private final String pass;
+    private final String firstname;
+    private final String lastname;
 
-    public User(String login, String password, String firstname, String lasttname) {
+    public User(String login, String password, String firstname, String lastname) {
         this.login = login;
         this.pass = password;
         this.firstname = firstname;
