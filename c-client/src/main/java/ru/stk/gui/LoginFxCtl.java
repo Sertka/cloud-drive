@@ -64,9 +64,7 @@ public class LoginFxCtl {
     @FXML
     private void login (ActionEvent event){
         Client.connect(this, mainFxCtl);
-
         Client.authClient(loginTFiled.getText(), passTFiled.getText());
-
     }
 
     /*

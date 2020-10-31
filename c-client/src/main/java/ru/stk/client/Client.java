@@ -64,7 +64,6 @@ public class Client {
     public static void connect(LoginFxCtl lfx, MainFxCtl mfx){
         CountDownLatch networkStarter = new CountDownLatch(1);
 
-
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -72,6 +71,7 @@ public class Client {
                     Network.getInstance().start(networkStarter, lfx, mfx, mainScene);
                 } catch (Exception e) {
                     logger.error("Server connection failure - " + e.getMessage());
+                    networkStarter.countDown();
                     lfx.noServer();
                 }
             }
@@ -91,7 +91,7 @@ public class Client {
      */
     public static void authClient (String login, String pass){
         userLogin = login;
-        ByteBuf buf = null;
+        ByteBuf buf;
 
         // send command login and password - ATH means authorisation data
         byte[] msgBytes = MsgLib.MsgType.ATH.toString().getBytes(StandardCharsets.UTF_8);
@@ -108,13 +108,13 @@ public class Client {
     }
 
 
-    /**
+    /*
      * Receives file and calls FileSender to send the file to sever
      */
     public static void sendClientFile(Path filePath) throws IOException {
         FileSender.sendFile(filePath, Network.getInstance().getCurrentChannel(), null, new ChannelFutureListener() {
             @Override
-            public void operationComplete(ChannelFuture future) throws Exception {
+            public void operationComplete(ChannelFuture future) {
                 if (!future.isSuccess()) {
                     future.cause().printStackTrace();
                     logger.error("Sending of file " + filePath.getFileName() +
@@ -128,12 +128,12 @@ public class Client {
         });
     }
 
-    /**
+    /*
      * Downloads defined file from server and saves on user's PC in defined folder.
      * Folder is currently set up in c-common.Settings
      */
     public static void downloadFile (String fileName){
-        ByteBuf buf = null;
+        ByteBuf buf;
         // send command "download file" - DNL
         byte[] msgBytes = MsgLib.MsgType.DNL.toString().getBytes(StandardCharsets.UTF_8);
         buf = ByteBufAllocator.DEFAULT.directBuffer(msgBytes.length);
@@ -143,12 +143,12 @@ public class Client {
         sendString(fileName);
     }
 
-    /**
+    /*
      * Renames the selected file
      */
     public static void renameFile (String fileName) {
-        ByteBuf buf = null;
-        String newName = "";
+        ByteBuf buf;
+        String newName;
 
         TextInputDialog dialog = new TextInputDialog(fileName);
 
@@ -175,7 +175,7 @@ public class Client {
     }
 
 
-    /**
+    /*
      * Deletes the selected file
      */
     public static void deleteFile (String fileName) {
@@ -190,7 +190,7 @@ public class Client {
         if (result.isPresent()) {
             if (result.get() == ButtonType.OK) {
 
-                ByteBuf buf = null;
+                ByteBuf buf;
                 //Sends command to delete the file - DEL
                 byte[] msgBytes = MsgLib.MsgType.DEL.toString().getBytes(StandardCharsets.UTF_8);
                 buf = ByteBufAllocator.DEFAULT.directBuffer(msgBytes.length);
@@ -204,7 +204,7 @@ public class Client {
     }
 
 
-    /**
+    /*
      * Prepares the collections of objects (files). Is used to fill in the file list on the
      * main form
      */
@@ -235,9 +235,9 @@ public class Client {
         }
         //fill in total folder size
         if (overallSize/(1024) >= 1L){
-            userFolderSize = Long.toString(overallSize/(1024)) + " Mb";
+            userFolderSize = overallSize / (1024) + " Mb";
         } else{
-            userFolderSize = Long.toString(overallSize) + " Kb";
+            userFolderSize = overallSize + " Kb";
         }
         // delete temporary file
         file.delete();
@@ -249,7 +249,7 @@ public class Client {
      * Sends incoming string to server
      */
     private static void sendString(String str){
-        ByteBuf buf = null;
+        ByteBuf buf;
 
         // send string length
         byte[] msgBytes = str.getBytes(StandardCharsets.UTF_8);
