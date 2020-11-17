@@ -13,6 +13,6 @@ public class MsgLib {
         ERR
     }
 
-
+    public static final String DELIMITER = " ";
 
 }

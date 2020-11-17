@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import ru.stk.common.MsgLib;
+import ru.stk.common.Settings;
+import ru.stk.gui.MainFxCtl;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -22,7 +24,12 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
     private BufferedOutputStream fileSaveStream;
     private byte[] msgBytes = new byte[MsgLib.MSG_LEN];
     private String msgString = "";
-    private final String fileFolder = "c_storage";
+    private String fileName;
+    private MainFxCtl fxc;
+
+    public ClientInHandler (MainFxCtl fxc){
+        this.fxc = fxc;
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws IOException {
@@ -55,11 +62,12 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
             /* Receive file name and create a new file in user's directory */
             if (curState == State.NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
-                    byte[] fileName = new byte[fileNameLength];
-                    buf.readBytes(fileName);
-                    System.out.println("STATE: Filename received - __" + new String(fileName, "UTF-8"));
+                    byte[] fileByte = new byte[fileNameLength];
+                    buf.readBytes(fileByte);
+                    System.out.println("STATE: Filename received - " + new String(fileByte, "UTF-8"));
+                    fileName = new String(fileByte);
                     fileSaveStream = new BufferedOutputStream
-                            (new FileOutputStream("__" + new String(fileName)));
+                            (new FileOutputStream(Settings.C_FOLDER + "/" +fileName));
                     curState = State.FILE_LEN;
                 }
             }
@@ -84,6 +92,10 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                         curState = State.IDLE;
                         System.out.println("File received and saved");
                         fileSaveStream.close();
+                        if (fileName.equals(Client.getLogin() + ".tmp")){
+                            System.out.println("File list received");
+                            fxc.fillFileTable(Client.prepareFileList());
+                        }
                         break;
                     }
                 }

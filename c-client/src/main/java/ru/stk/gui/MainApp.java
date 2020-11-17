@@ -23,16 +23,22 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
         Parent root = loader.load();
         Scene loginScene = new Scene(root, 400, 400);
-        //create and initialize controller
-        FXController controller = loader.getController();
-        controller.setCurStage(primaryStage);
+        //create and initialize login controller
+        LoginFxCtl loginCtl = loader.getController();
+
 
         //create main scene
         FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("/main.fxml"));
         Parent rootMain = loaderMain.load();
-        Scene mainScene = new Scene(rootMain, 400, 400);
-        //set main scene in controller
-        controller.setMainScene(mainScene);
+        Scene mainScene = new Scene(rootMain, 550, 400);
+        MainFxCtl mainCtl = loaderMain.getController();
+
+        //set-up controllers
+        loginCtl.setCurStage(primaryStage);
+        loginCtl.setMainScene(mainScene);
+        loginCtl.setMainCtl(mainCtl);
+        mainCtl.setCurStage(primaryStage);
+
         //set app title
         primaryStage.setTitle("Сетевое хранилище cloud drive");
         //set up icon for the form header
@@ -43,5 +49,4 @@ public class MainApp extends Application {
         primaryStage.setScene(loginScene);
         primaryStage.show();
     }
-
 }
