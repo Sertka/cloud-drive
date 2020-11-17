@@ -1,0 +1,398 @@
+2020-10-27 12:55:42,748 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-27 21:06:09,107 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 21:06:09,253 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-27 21:06:09,285 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-27 21:06:09,287 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-27 21:06:14,470 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.Client$2: File social_network.sql has been successfully sent to server
+2020-10-27 21:06:14,476 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-27 21:06:14,477 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-27 23:23:58,935 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:23:59,405 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:24:00,255 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:24:49,696 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:24:50,123 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:24:51,510 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:27:22,039 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:27:22,439 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:27:23,604 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:27:48,895 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:27:49,313 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:27:50,290 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:28:50,009 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:28:50,431 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:28:51,490 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:29:07,062 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:29:07,489 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:29:22,377 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:30:50,796 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:30:51,240 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:30:58,962 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:32:10,787 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:32:11,219 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:32:12,079 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:33:06,650 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:33:07,115 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:33:08,538 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:36:08,935 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:36:09,356 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:36:10,167 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:36:55,322 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:36:55,740 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:36:56,503 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:36:58,852 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-27 23:38:38,591 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:38:39,001 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:38:40,371 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:38:42,725 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-27 23:39:52,477 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:39:52,893 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:39:54,201 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:39:56,560 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-27 23:44:39,348 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:44:39,753 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:44:40,485 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:44:42,844 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-27 23:46:30,276 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:46:30,747 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:46:31,959 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:46:34,325 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-27 23:52:13,789 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:52:14,223 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:52:15,196 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:54:29,141 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:54:29,650 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:54:30,895 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:55:53,369 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:55:53,849 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:55:54,538 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-27 23:58:48,935 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-27 23:58:49,410 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-27 23:58:50,287 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:01:36,132 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:01:36,572 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:01:37,810 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:01:57,897 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:01:58,311 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:02:01,121 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:02:01,269 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 00:02:01,304 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 00:02:01,305 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 00:04:28,975 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:04:29,429 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:04:30,351 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:05:07,757 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:05:08,159 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:05:10,356 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:05:53,781 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:05:54,232 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:05:55,049 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 00:05:57,411 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - null
+2020-10-28 00:07:19,304 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 00:07:19,714 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 00:07:20,807 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:25:28,200 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:25:28,629 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:25:29,636 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:25:32,038 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - null
+2020-10-28 11:25:58,208 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:25:58,606 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:25:59,601 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:26:12,188 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - null
+2020-10-28 11:27:50,411 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:27:50,852 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:27:51,838 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:31:01,071 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:31:01,435 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:31:02,793 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:31:05,162 ERROR   -- [Thread-5] ru.stk.client.Client: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-28 11:31:42,369 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:31:42,780 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:31:43,540 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:31:45,899 ERROR   -- [Thread-5] ru.stk.client.Client: Server connection failure - 1Connection refused: localhost/127.0.0.1:8190
+2020-10-28 11:32:46,346 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:32:46,730 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:32:47,682 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:32:47,824 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 11:32:47,853 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 11:32:47,855 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 11:33:00,976 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 11:33:00,977 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 11:38:15,121 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:38:15,520 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:39:06,906 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:39:07,292 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:56:59,361 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:56:59,795 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:57:03,021 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:57:03,168 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 11:57:03,192 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Empty user folder received
+2020-10-28 11:58:46,830 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 11:58:47,266 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 11:58:50,615 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 11:58:50,758 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:00:42,529 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:00:42,913 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:00:54,874 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:00:55,280 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:00:58,198 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:01:00,558 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-28 12:01:14,994 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:01:15,412 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:01:19,287 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:01:19,433 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:02:33,110 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:02:33,526 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:02:37,732 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:02:37,882 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:02:37,915 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Empty user folder received
+2020-10-28 12:03:22,095 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:03:22,492 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:03:26,349 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:03:26,520 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:03:57,937 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Empty user folder received
+2020-10-28 12:12:14,268 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:12:14,648 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:12:22,679 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:12:22,832 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:15:28,565 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:15:28,930 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:15:32,072 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:15:32,220 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:17:54,967 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:17:55,364 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:17:58,077 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:17:58,233 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:19:31,789 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:19:32,196 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:19:35,090 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:19:35,241 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:20:00,724 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:20:01,131 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:20:02,617 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:20:02,768 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:20:02,798 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:20:02,799 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:20:07,993 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:20:07,995 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:20:15,335 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:20:15,337 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:20:16,632 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:20:16,635 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:21:14,902 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:21:15,301 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:21:16,687 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:21:16,837 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:21:16,867 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:21:16,868 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:21:20,729 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:21:20,732 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:23:02,725 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:23:03,132 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:23:06,435 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:23:08,794 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-28 12:24:22,499 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:24:22,894 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:24:24,414 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:24:26,782 ERROR   -- [Thread-5] ru.stk.client.Client$1: Server connection failure - Connection refused: localhost/127.0.0.1:8190
+2020-10-28 12:25:04,137 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:25:04,584 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:25:07,225 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:25:07,382 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:29:11,003 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:29:11,408 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:29:12,358 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:29:12,510 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:29:12,540 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:29:12,540 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:29:25,459 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:29:25,462 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:29:25,467 INFO    -- [nioEventLoopGroup-3-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:29:25,468 INFO    -- [nioEventLoopGroup-3-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:29:57,378 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:29:57,772 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:29:58,677 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:29:58,856 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:29:58,890 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:29:58,891 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:35:05,819 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:35:06,206 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:35:07,517 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:35:07,667 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:35:07,696 ERROR   -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Not on FX application thread; currentThread = nioEventLoopGroup-2-1
+2020-10-28 12:36:26,064 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:36:26,525 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:36:27,423 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:36:27,578 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:36:27,604 ERROR   -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Not on FX application thread; currentThread = nioEventLoopGroup-2-1
+2020-10-28 12:37:08,926 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:37:09,363 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:37:10,204 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:37:10,354 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:37:10,385 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:37:10,386 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:38:30,205 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:38:30,649 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:38:31,680 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:38:31,833 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:38:31,858 ERROR   -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Not on FX application thread; currentThread = nioEventLoopGroup-2-1
+2020-10-28 12:41:43,423 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:41:43,790 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:41:44,642 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:41:44,783 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:41:44,809 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:41:44,812 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:42:08,336 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:42:08,763 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:42:09,588 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:42:09,727 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:42:09,754 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:42:09,755 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:42:25,141 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:42:25,590 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:42:29,269 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:42:29,425 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:42:34,668 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:42:34,672 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:42:34,682 INFO    -- [nioEventLoopGroup-3-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:42:34,685 INFO    -- [nioEventLoopGroup-3-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:43:55,608 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:43:56,040 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:43:57,351 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:43:57,495 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 12:43:57,520 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 12:43:57,523 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 12:44:08,802 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 12:44:09,225 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 12:44:11,900 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 12:44:12,048 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 16:56:38,291 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 16:56:38,777 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:21:15,972 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:21:16,392 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:21:17,412 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:21:17,566 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:21:17,590 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:21:17,592 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:21:17,595 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:21:22,618 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - social_network.sql
+2020-10-28 17:21:22,624 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - social_network.sql
+2020-10-28 17:21:22,624 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:21:22,624 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:25:17,689 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:25:18,124 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:25:19,125 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:25:19,265 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:25:19,287 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:25:19,291 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:25:19,293 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:29:47,956 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:29:48,377 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:29:49,474 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:29:49,618 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:29:49,642 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:29:49,648 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:29:49,650 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:29:49,653 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:30:03,312 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - HW08_STkachev.zip
+2020-10-28 17:30:03,340 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - HW08_STkachev.zip
+2020-10-28 17:30:03,340 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:30:03,340 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:30:03,341 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:30:03,342 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:36:24,189 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:36:24,623 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:36:25,653 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:36:25,787 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:36:25,813 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:36:25,818 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:36:25,819 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:36:25,821 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:37:04,058 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:37:04,474 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:37:05,713 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:37:05,859 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:37:05,887 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:37:05,923 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:37:05,926 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:37:19,055 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:37:28,843 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:37:29,269 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:37:40,673 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:37:41,107 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:37:42,214 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:37:42,360 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:37:42,382 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:37:42,386 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:37:42,389 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:37:45,655 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:37:45,656 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:37:45,657 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - HW05_STkachev.txt
+2020-10-28 17:37:45,659 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - HW05_STkachev.txt
+2020-10-28 17:37:45,660 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:37:45,660 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:37:45,661 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:44:09,034 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:44:09,437 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:44:10,458 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:44:10,607 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:44:10,633 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:44:10,639 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:44:10,642 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:44:24,106 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.Client$2: File КОЛЛАЖ.pptx has been successfully sent to server
+2020-10-28 17:44:24,113 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:44:24,114 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:44:38,234 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - КОЛЛАЖ.pptx
+2020-10-28 17:44:41,478 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - КОЛЛАЖ.pptx
+2020-10-28 17:44:41,479 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:44:41,479 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:44:41,488 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - КОЛЛАЖ.pptx
+2020-10-28 17:44:42,646 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - КОЛЛАЖ.pptx
+2020-10-28 17:44:42,646 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:44:42,646 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:44:42,649 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:44:42,650 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File downloaded
+2020-10-28 17:45:08,472 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:45:08,472 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:45:08,473 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Error file renaming
+2020-10-28 17:47:00,925 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:47:01,340 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:47:02,685 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:47:02,831 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:47:02,855 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:47:02,859 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:47:02,862 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:47:33,748 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:47:33,749 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:47:49,273 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:47:49,274 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:48:07,041 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Error file deleting
+2020-10-28 17:48:07,053 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:48:07,053 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:49:07,744 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:49:08,129 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:49:09,692 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:49:09,836 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:49:09,860 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:49:09,865 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:49:09,869 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:49:25,947 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.Client$2: File КОЛЛАЖ.pptx has been successfully sent to server
+2020-10-28 17:49:25,995 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:49:25,995 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:49:38,801 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:49:38,802 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:51:24,119 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:51:24,527 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:51:38,176 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Controllers are successfully initialised
+2020-10-28 17:51:38,563 INFO    -- [JavaFX Application Thread] ru.stk.gui.MainApp: Application started
+2020-10-28 17:51:39,576 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Connection with server started
+2020-10-28 17:51:39,728 INFO    -- [JavaFX Application Thread] ru.stk.client.Client: Authorisation data provided
+2020-10-28 17:51:39,754 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Login successful
+2020-10-28 17:51:39,758 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:51:39,763 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:51:45,925 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Error file deleting
+2020-10-28 17:51:45,928 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:51:45,929 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:51:50,861 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:51:50,862 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp
+2020-10-28 17:51:55,839 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: Start file receiving - Serge.tmp
+2020-10-28 17:51:55,839 INFO    -- [nioEventLoopGroup-2-1] ru.stk.client.ClientInHandler: File is successfully received and saved - Serge.tmp

@@ -7,6 +7,9 @@ import ru.stk.data.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Manages user authorisation
+ */
 public class AuthController {
     private static final Logger logger = LogManager.getLogger(AuthController.class);
 

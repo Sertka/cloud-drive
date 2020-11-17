@@ -1,0 +1,135 @@
+2020-10-27 12:52:54,873 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-27 12:52:59,304 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised 
+
+2020-10-27 12:55:37,297 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-27 12:55:42,766 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-27 21:06:03,376 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-27 21:06:09,273 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 00:01:55,675 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 00:02:01,293 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 11:32:43,127 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 11:32:47,843 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 11:38:12,805 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 11:39:04,785 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 11:56:55,647 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 11:57:03,187 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 11:58:43,664 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 11:59:04,924 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:01:12,636 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:01:19,452 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:01:19,453 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:02:29,633 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:02:37,900 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:02:37,900 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:03:12,835 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:03:26,537 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:03:26,537 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:12:10,311 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:12:22,848 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:12:22,849 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:15:25,730 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:15:32,235 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:15:32,236 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:17:52,041 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:17:58,250 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:17:58,251 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:19:28,946 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:19:35,260 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:19:35,260 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:19:58,033 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:20:02,787 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:20:07,997 DEBUG   -- [nioEventLoopGroup-3-2] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:20:07,997 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:20:15,338 DEBUG   -- [nioEventLoopGroup-3-3] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:20:15,339 INFO    -- [nioEventLoopGroup-3-3] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:20:16,636 DEBUG   -- [nioEventLoopGroup-3-4] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:20:16,637 INFO    -- [nioEventLoopGroup-3-4] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:21:12,584 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:21:16,856 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:21:20,733 DEBUG   -- [nioEventLoopGroup-3-2] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:21:20,734 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:25:01,076 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:25:07,400 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:25:07,400 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:29:07,062 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:29:12,528 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:29:12,529 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:29:25,464 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:29:25,465 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:29:53,153 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:29:58,876 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:29:58,878 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:35:01,787 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:35:07,688 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:35:07,689 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:36:22,965 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:36:27,596 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:36:27,597 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:37:06,372 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:37:10,374 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:37:10,374 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:38:27,027 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:38:31,851 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:38:31,851 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:41:39,802 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:41:44,801 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:41:44,802 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:42:05,763 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:42:09,744 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:42:09,745 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:42:21,380 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:42:29,440 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:42:29,441 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 12:42:34,674 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:42:34,674 INFO    -- [nioEventLoopGroup-3-2] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:43:51,343 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:43:57,512 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 12:43:57,513 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 12:44:06,250 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 12:44:12,064 DEBUG   -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: Authorisation for user Serge failed
+2020-10-28 12:44:12,064 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation failed. Login - Serge
+2020-10-28 16:56:53,745 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:21:12,836 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:21:17,583 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:21:17,583 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:21:22,620 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - social_network.sql
+2020-10-28 17:25:14,070 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:25:19,283 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:25:19,284 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:29:44,388 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:29:49,638 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:29:49,639 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:30:03,317 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - HW08_STkachev.zip
+2020-10-28 17:36:21,088 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:36:25,807 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:36:25,807 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:36:55,132 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:37:05,881 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:37:05,882 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:37:38,281 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:37:42,378 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:37:42,378 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:37:45,650 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - null
+2020-10-28 17:37:45,657 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - HW05_STkachev.txt
+2020-10-28 17:44:05,628 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:44:10,628 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:44:10,629 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:44:24,112 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File received - КОЛЛАЖ.pptx
+2020-10-28 17:44:38,234 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - КОЛЛАЖ.pptx
+2020-10-28 17:44:38,237 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File downloaded - КОЛЛАЖ.pptx
+2020-10-28 17:45:08,470 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File renamed from КОЛЛАЖ.pptx to null
+2020-10-28 17:45:08,472 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: Not possible to rename the file - КОЛЛАЖ.pptx
+2020-10-28 17:46:57,770 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:47:02,850 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:47:02,850 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:47:26,124 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File renamed from null to collage.ppt
+2020-10-28 17:47:49,271 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File renamed from HW05_STkachev.sql to HW25_STkachev.sql
+2020-10-28 17:48:07,040 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: Not possible to delete the file - null
+2020-10-28 17:49:03,269 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:49:09,855 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:49:09,856 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:49:25,993 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: File received - КОЛЛАЖ.pptx
+2020-10-28 17:51:36,010 INFO    -- [main] ru.stk.server.AuthController: Users received from DB
+2020-10-28 17:51:39,749 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.AuthController: User Serge authorised
+2020-10-28 17:51:39,749 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: User authorisation successful. Login - Serge
+2020-10-28 17:51:45,925 INFO    -- [nioEventLoopGroup-3-1] ru.stk.server.MainHandler: Not possible to delete the file - null

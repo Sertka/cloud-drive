@@ -3,17 +3,26 @@ package ru.stk.client;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import javafx.scene.Scene;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.common.MsgLib;
 import ru.stk.common.Settings;
+import ru.stk.gui.LoginFxCtl;
 import ru.stk.gui.MainFxCtl;
+import ru.stk.gui.MsgBox;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Class performs protocol communications with server
+ */
 public class ClientInHandler extends ChannelInboundHandlerAdapter {
-    /*Defines current stage in communication with client */
+
+    //define current stage in file receiving from server
     public enum State {
         IDLE, NAME_LEN, NAME, FILE_LEN, FILE
     }
@@ -26,87 +35,122 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
     private final byte[] msgBytes = new byte[MsgLib.MSG_LEN];
     private String msgString = "";
     private String fileName;
-    private final MainFxCtl fxc;
+    private final LoginFxCtl lfx; //controller for login form
+    private final MainFxCtl mfx; //controller for main form
+    private Scene mainScene;
 
-    public ClientInHandler (MainFxCtl fxc){
-        this.fxc = fxc;
+    private static final Logger logger = LogManager.getLogger(Client.class);
+
+    public ClientInHandler (LoginFxCtl lfx, MainFxCtl mfx){
+        this.lfx = lfx;
+        this.mfx = mfx;
     }
 
+    /*
+     * Processes messages from server
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws IOException {
         ByteBuf buf = ((ByteBuf) msg);
 
         while (buf.readableBytes() > 0) {
-            /* TODO: Here establish call of different commands - Cmd and FileService */
 
+            // receive message
             if (curState == State.IDLE) {
                 buf.readBytes(msgBytes);
                 msgString = new String(msgBytes, StandardCharsets.UTF_8);
             }
 
-            /* Receive command of the empty user directory - EMP means "empty" */
+            // command of the empty user directory received - EMP
             if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.EMP.toString())) {
-                fxc.fillFileTable(null);
-                System.out.println("Empty user storage detected");
+                mfx.fillFileTable(null);
+                logger.info("Empty user folder received");
             }
 
+            // user authorisation successful - ATS
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.ATS.toString())) {
+                logger.info("Login successful");
+                lfx.loginSuccessful();
+            }
 
-            /* Receive command of the incoming new file - FLE means a file */
+            // user authorisation failed - ATF
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.ATF.toString())) {
+                logger.info("Login failed");
+                lfx.loginFailed("Неверный логин или пароль!");
+            }
+
+            // user authorisation failed - ATF
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.FER.toString())) {
+                logger.info("Error sever folder creation");
+                lfx.loginFailed("Ошибка создания раздела на сервере");
+            }
+
+            // file successfully downloaded - DLS
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.DLS.toString())) {
+                logger.info("File downloaded");
+                mfx.fileDownloaded();
+            }
+
+            // file rename error - RNE
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.RNE.toString())) {
+                logger.info("Error file renaming");
+                mfx.renameFailed();
+            }
+
+            // file delete error - DLE
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.DLE.toString())) {
+                logger.info("Error file deleting");
+                mfx.deleteFailed();
+            }
+
+            // command of the incoming new file received - FLE
             if (curState == State.IDLE & msgString.equals("FLE")) {
                 curState = State.NAME_LEN;
                 inFileLength = 0L;
-                System.out.println("STATE: Start file receiving");
             }
 
-            /* Receive length of a new file name */
+            // receive length of a new file name
             if (curState == State.NAME_LEN) {
                 if (buf.readableBytes() >= 4) {
-                    System.out.println("STATE: Get filename length");
                     fileNameLength = buf.readInt();
                     curState = State.NAME;
                 }
             }
 
-            /* Receive file name and create a new file in user's directory */
+            // receive file name and create a new file in user's directory
             if (curState == State.NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] fileByte = new byte[fileNameLength];
                     buf.readBytes(fileByte);
-                    System.out.println("STATE: Filename received - " + new String(fileByte, StandardCharsets.UTF_8));
-                    fileName = new String(fileByte);
+
+                    fileName = new String(fileByte, StandardCharsets.UTF_8);
                     fileSaveStream = new BufferedOutputStream
                             (new FileOutputStream(Settings.C_FOLDER + "/" +fileName));
                     curState = State.FILE_LEN;
+                    logger.info("Start file receiving - " + fileName);
                 }
             }
 
-            /* Receive length of a new file */
+            // receive length of a new file
             if (curState == State.FILE_LEN) {
                 if (buf.readableBytes() >= 8) {
                     fileLength = buf.readLong();
-                    System.out.println("STATE: File length received - " + fileLength);
-            /*        if (fileLength == 0) {
-                        curState = State.IDLE;
-                        break;
-                    }*/
                     curState = State.FILE;
                 }
             }
 
-            /*TODO: Put the file to the valid directory of the user */
-            /*TODO: Add error messages to the user and log for all blocks */
-            /* Receive and save content of the file */
+            //receive and save content of the file
             if (curState == State.FILE) {
                 while (buf.readableBytes() > 0) {
                     fileSaveStream.write(buf.readByte());
                     inFileLength++;
                     if (fileLength == inFileLength) {
                         curState = State.IDLE;
-                        System.out.println("File received and saved");
+                        logger.info("File is successfully received and saved - " + fileName);
                         fileSaveStream.close();
+                        //if temporary file with user file list received - update file list on main form
                         if (fileName.equals(Client.getLogin() + ".tmp")){
-                            System.out.println("File list received");
-                            fxc.fillFileTable(Client.prepareFileList());
+                            mfx.fillFileTable(Client.prepareFileList());
                         }
                         break;
                     }
@@ -116,13 +160,16 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
         if (buf.readableBytes() == 0) {
             buf.release();
         }
-
     }
 
+    /*
+     * Processes Netty exceptions
+     */
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
+        logger.error(cause.getMessage());
+        MsgBox.showErrorMsg(mainScene, cause.getMessage());
     }
-
 }

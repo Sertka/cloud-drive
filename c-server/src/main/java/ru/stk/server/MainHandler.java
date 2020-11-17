@@ -2,24 +2,26 @@ package ru.stk.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.common.MsgLib;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 
 /**
  * Class Handler uses Netty functionality to establish connections with clients and
- * handle commands from clients.
+ * handle commands from clients
  */
-
 public class MainHandler extends ChannelInboundHandlerAdapter {
-    private AuthController authCtl;
+    private final AuthController authCtl;
     
     public MainHandler (AuthController autCtl){
         this. authCtl = autCtl;
     }
 
-    /*Defines current stage in communication with client */
+    //Defines current stage in communication with client
     private enum State {
         IDLE,
         NAME_LEN, NAME, FILE_LEN, FILE,
@@ -30,28 +32,33 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
     }
 
     private State curState = State.IDLE;
-    private int fileNameLength;
-    private long fileLength;
-    private String fileName;
-    private long inFileLength;
+    private int fileNameLength;     // length of the file name string
+    private long fileLength;        // length of the file itself
+    private String fileName;        // file name
+    private long inFileLength;      // length of the received file part
 
-    private int loginLength;
-    private int passLength;
-    private String login;
-    private String pass;
-    private String userPath;
+    private int loginLength;        // login length
+    private int passLength;         // password length
+    private String login;           // user login
+    private String pass;            // user password
+    private String userPath;        // path to user folder on server
 
-    private String oldFileName;
-    private String newFileName;
+    private String oldFileName;     // file name before rename
+    private String newFileName;     // file name after rename
 
     private BufferedOutputStream fileSaveStream;
     private final byte[] msgBytes = new byte[MsgLib.MSG_LEN];
     private String msgString = "";
 
+    private static final Logger logger = LogManager.getLogger(AuthController.class);
+
+    /*
+     * Netty channel read method
+     */
     @Override
     public void channelRead (ChannelHandlerContext ctx, Object msg) throws IOException {
-        ByteBuf buf = ((ByteBuf) msg);
-        File f;
+        ByteBuf buf = ((ByteBuf) msg);  // Netty byte buffer
+        File f;                         // file for sending to user
 
         while (buf.readableBytes() > 0) {
 
@@ -59,19 +66,25 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 buf.readBytes(msgBytes);
                 msgString = new String(msgBytes, StandardCharsets.UTF_8);
             }
-            /* Receive command of the incoming login and password - ATH means authorisation data */
-            if (curState == State.IDLE & msgString.equals("ATH")) {
+
+            /*
+             * This block is responsible for user authorisation
+             */
+
+            // receive command of the incoming login and password - ATH
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.ATH.toString())) {
                 curState = State.LOGIN_LEN;
-                System.out.println("STATE: Start auth receiving");
             }
-            /* Receive length of a login */
+
+            // receive length of a login
             if (curState == State.LOGIN_LEN) {
                 if (buf.readableBytes() >= 4) {
                     loginLength = buf.readInt();
                     curState = State.LOGIN;
                 }
             }
-            // Receive login
+
+            // receive login
             if (curState == State.LOGIN) {
                 if (buf.readableBytes() >= loginLength) {
                     byte[] loginBytes = new byte[loginLength];
@@ -80,14 +93,15 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     curState = State.PASS_LEN;
                 }
             }
-            // Receive password length
+
+            // receive password length
             if (curState == State.PASS_LEN) {
                 if (buf.readableBytes() >= 4) {
                     passLength = buf.readInt();
                     curState = State.PASS;
                 }
             }
-            // Receive password
+            // receive password
             if (curState == State.PASS) {
                 if (buf.readableBytes() >= passLength) {
                     byte[] passBytes = new byte[passLength];
@@ -96,15 +110,23 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     curState = State.IDLE;
                 }
 
-                /* check user credentials and save user folder */
+                // check user credentials and save user folder
                 String authResult = CmdService.clientLogin(login, pass, authCtl);
-                if (authResult.equals("")) {
-                    System.out.println("Authorisation failed");
-                } else {
+                if (authResult.equals(MsgLib.MsgType.ATF.toString())) {
+                    logger.info("User authorisation failed. Login - " + login);
+                    // send "auth. failed" message to user
+                    ctx.writeAndFlush(MsgLib.MsgType.ATF);
+                } else if(authResult.equals(MsgLib.MsgType.FER.toString())){
+                    logger.error("Not possible to create a client folder for user - " + login);
+                    // send "folder error" message to user
+                    ctx.writeAndFlush(MsgLib.MsgType.FER);
+                } else{
                     userPath = authResult;
-                    System.out.println("Authorisation successful");
                     curState = State.IDLE;
-                    //send storage content to user
+                    logger.info("User authorisation successful. Login - " + login);
+                    // send "auth. successful" message
+                    ctx.writeAndFlush(MsgLib.MsgType.ATS);
+                    // send storage content
                     f = CmdService.getFolderContent(userPath, login);
                     if (f == null){
                         ctx.writeAndFlush(MsgLib.MsgType.EMP);
@@ -114,37 +136,37 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
 
+            /*
+             * This block is responsible for file receiving
+             */
 
-            // Receive command of the incoming new file - FLE means a file */
-            if (curState == State.IDLE & msgString.equals("FLE")) {
+            // receive command of the incoming new file - FLE
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.FLE.toString())) {
                 curState = State.NAME_LEN;
                 inFileLength = 0L;
-                System.out.println("STATE: Start file receiving");
             }
 
-            /* Receive length of a new file name */
+            // receive length of a new file name
             if (curState == State.NAME_LEN) {
                 if (buf.readableBytes() >= 4) {
                     fileNameLength = buf.readInt();
                     curState = State.NAME;
-                    System.out.println("STATE: Get filename length");
                 }
             }
 
-            // Receive file name and create a new file in user's directory */
+            // receive file name and create a new file in user's directory
             if (curState == State.NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] nameBytes = new byte[fileNameLength];
                     buf.readBytes(nameBytes);
                     fileName = new String(nameBytes, StandardCharsets.UTF_8);
-                    System.out.println("STATE: Filename received -" + fileName);
                     fileSaveStream = new BufferedOutputStream
                             (new FileOutputStream(userPath + fileName));
                     curState = State.FILE_LEN;
                 }
             }
 
-            // Receive length of a new file
+            // receive length of a new file
             if (curState == State.FILE_LEN) {
                 if (buf.readableBytes() >= 8) {
                     fileLength = buf.readLong();
@@ -152,9 +174,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
 
-            //TODO: Add error messages to the user and log for all blocks
-
-            // Receive and save content of the file
+            // receive and save content of the file
             if (curState == State.FILE) {
                 while (buf.readableBytes() > 0) {
                     fileSaveStream.write(buf.readByte());
@@ -162,7 +182,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     if (fileLength == inFileLength) {
                         curState = State.IDLE;
                         fileSaveStream.close();
-                        System.out.println("File received and saved");
+                        logger.info("File received - " + fileName);
 
                         //send storage content to user
                         f = CmdService.getFolderContent(userPath, login);
@@ -176,19 +196,24 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                 }
             }
 
-            // Receive command of the file download request
+            /*
+             * This block is responsible for file sending
+             */
+
+            // receive command of the file download request - DNL
             if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.DNL.toString())) {
                 curState = State.DNL_LEN;
             }
-            // Receive length of a file name
+
+            // receive length of a file name
             if (curState == State.DNL_LEN) {
                 if (buf.readableBytes() >= 4) {
                     fileNameLength = buf.readInt();
                     curState = State.DNL_NAME;
-                    System.out.println("STATE: Download file name length received");
                 }
             }
-            // Receive file name
+
+            // receive file name
             if (curState == State.DNL_NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] nameBytes = new byte[fileNameLength];
@@ -196,8 +221,10 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     fileName = new String(nameBytes, StandardCharsets.UTF_8);
                     curState = State.IDLE;
                 }
-                System.out.println("Start file sending");
-                ctx.writeAndFlush(userPath + fileName);
+                // send file to user
+                f = Paths.get(userPath + fileName).toFile();
+                ctx.writeAndFlush(f);
+                logger.info("File downloaded - " + fileName);
                 //send storage content to user
                 f = CmdService.getFolderContent(userPath, login);
                 if (f == null){
@@ -212,48 +239,48 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
              * It gets old and new file names and calls renameFile method
              */
 
-            /* Receive command of the incoming login and password - ATH means authorisation data */
-            if (curState == State.IDLE & msgString.equals("REN")) {
+            // receive command of file renaming- REN
+            if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.REN.toString())) {
                 curState = State.OLD_NAME_LEN;
             }
-            // Receive length of an old file name
+
+            // receive length of an old file name
             if (curState == State.OLD_NAME_LEN) {
                 if (buf.readableBytes() >= 4) {
                     fileNameLength = buf.readInt();
                     curState = State.OLD_NAME;
                 }
             }
-            // Receive old name
+
+            // receive old name
             if (curState == State.OLD_NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] nameBytes = new byte[fileNameLength];
                     buf.readBytes(nameBytes);
                     oldFileName = new String(nameBytes, StandardCharsets.UTF_8);
-                    System.out.println("STATE: Get old file name");
                     curState = State.NEW_NAME_LEN;
                 }
             }
-            // Receive length of a new file name
+
+            // receive length of a new file name
             if (curState == State.NEW_NAME_LEN) {
                 if (buf.readableBytes() >= 4) {
                     fileNameLength = buf.readInt();
                     curState = State.NEW_NAME;
                 }
             }
-            // Receive new name
+            // receive new name
             if (curState == State.NEW_NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] nameBytes = new byte[fileNameLength];
                     buf.readBytes(nameBytes);
                     newFileName = new String(nameBytes, StandardCharsets.UTF_8);
-                    System.out.println("STATE: Get new file name");
                     curState = State.IDLE;
                 }
-
-                //Rename file
+                //rename file
                 boolean renameResult = CmdService.renameFile(oldFileName, newFileName, login);
                 if (renameResult) {
-                    System.out.println("Rename successful");
+                    logger.info("File renamed from " + oldFileName + " to " + newFileName);
                     //send storage content to user
                     f = CmdService.getFolderContent(userPath, login);
                     if (f == null){
@@ -262,7 +289,8 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                         ctx.writeAndFlush(f);
                     }
                 } else {
-                    System.out.println("Rename failed");
+                    logger.info("Not possible to rename the file - " + oldFileName);
+                    ctx.writeAndFlush(MsgLib.MsgType.RNE);
                 }
             }
 
@@ -272,7 +300,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
             if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.DEL.toString())) {
                 curState = State.DEL_LEN;
             }
-            // Receive length of a file name
+            // receive length of a file name
             if (curState == State.DEL_LEN) {
                 if (buf.readableBytes() >= 4) {
                     fileNameLength = buf.readInt();
@@ -280,7 +308,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     System.out.println("Deleted file name length received");
                 }
             }
-            // Receive file name
+            // receive file name
             if (curState == State.DEL_NAME) {
                 if (buf.readableBytes() >= fileNameLength) {
                     byte[] nameBytes = new byte[fileNameLength];
@@ -288,20 +316,23 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     fileName = new String(nameBytes, StandardCharsets.UTF_8);
                     curState = State.IDLE;
                 }
-                CmdService.deleteFile(fileName);
-                System.out.println("File deleted");
-                //send storage content to user
-                f = CmdService.getFolderContent(userPath, login);
-                if (f == null){
-                    ctx.writeAndFlush(MsgLib.MsgType.EMP);
+                boolean deleteResult = CmdService.deleteFile(fileName);
+
+                if (deleteResult) {
+                    //send storage content to user
+                    f = CmdService.getFolderContent(userPath, login);
+                    if (f == null) {
+                        ctx.writeAndFlush(MsgLib.MsgType.EMP);
+                    } else {
+                        ctx.writeAndFlush(f);
+                    }
                 } else {
-                    ctx.writeAndFlush(f);
+                    logger.info("Not possible to delete the file - " + fileName);
+                    ctx.writeAndFlush(MsgLib.MsgType.DLE);
                 }
             }
 
-
-
-
+            //releasing buffer
             if (buf.readableBytes() == 0) {
                 buf.release();
             }
@@ -310,7 +341,7 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
+        logger.error("Netty error - " + cause.getMessage());
         ctx.close();
     }
 }

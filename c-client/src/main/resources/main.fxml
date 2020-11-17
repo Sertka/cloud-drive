@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.stk.gui.MainFxCtl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.251" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.stk.gui.MainFxCtl">
    <children>
       <Button fx:id="deleteButton" layoutX="267.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteFile" prefHeight="27.0" prefWidth="112.0" text="Удалить" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="14.0" />
       <Button fx:id="uploadButton" layoutX="14.0" layoutY="380.0" mnemonicParsing="false" onAction="#uploadFile" prefHeight="27.0" prefWidth="112.0" text="Загрузить файл" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="14.0" />

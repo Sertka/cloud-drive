@@ -10,12 +10,25 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 import java.net.InetSocketAddress;
+import java.security.PublicKey;
 import java.util.concurrent.CountDownLatch;
+
+import javafx.scene.Scene;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.common.Settings;
+import ru.stk.gui.LoginFxCtl;
 import ru.stk.gui.MainFxCtl;
+import ru.stk.gui.MsgBox;
 
+
+/**
+ * Class provides Netty connection with server
+ */
 public class Network {
+    private Channel curChannel;
 
+    private static final Logger logger = LogManager.getLogger(Client.class);
 
     private static final Network thisNetwork = new Network();
 
@@ -23,13 +36,11 @@ public class Network {
         return thisNetwork;
     }
 
-    private Channel curChannel;
     public Channel getCurrentChannel() {
         return curChannel;
     }
 
-
-    public void start(CountDownLatch countDownLatch, MainFxCtl fxc) {
+    public void start(CountDownLatch countDownLatch, LoginFxCtl lfx, MainFxCtl mfx, Scene mainScene) throws Exception {
         EventLoopGroup clientGroup = new NioEventLoopGroup();
         try {
             Bootstrap cBootstrap = new Bootstrap();
@@ -38,23 +49,20 @@ public class Network {
                     .channel(NioSocketChannel.class)
                     .remoteAddress(new InetSocketAddress("localhost", Settings.PORT))
                     .handler(new ChannelInitializer<SocketChannel>() {
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            socketChannel.pipeline().addLast(new ClientInHandler(fxc));
+                        protected void initChannel(SocketChannel socketChannel) {
+                            socketChannel.pipeline().addLast(new ClientInHandler(lfx, mfx));
                             curChannel = socketChannel;
                         }
                     });
             ChannelFuture channelFuture = cBootstrap.connect().sync();
             countDownLatch.countDown();
             channelFuture.channel().closeFuture().sync();
-        } catch (Exception e) {
-            /* TODO: Handle this exception, write99 log, inform user */
-            e.printStackTrace();
+
         } finally {
             try {
                 clientGroup.shutdownGracefully().sync();
             } catch (InterruptedException e) {
-                /* TODO: Handle this exception, write log, inform user */
-                e.printStackTrace();
+                logger.error("Connection closing failure - " + e.getMessage());
             }
         }
     }

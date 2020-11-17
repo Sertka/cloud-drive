@@ -10,8 +10,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import ru.stk.common.Settings;
 
-import java.util.concurrent.CountDownLatch;
-
+/**
+ * Main sever class - starts server
+ */
 public class Server {
     public AuthController authCtl;
 
@@ -43,5 +44,4 @@ public class Server {
     public static void main(String[] args) throws Exception {
         new Server().run();
     }
-
 }

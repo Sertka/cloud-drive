@@ -1,18 +1,25 @@
 package ru.stk.server;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.common.MsgLib;
 import ru.stk.common.Settings;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
 
+
+/**
+ * Provides static methods to handle user's request to the server
+ */
 public class CmdService {
+    public static String userLogin;
 
-public static String userLogin;
-
+    /*
+     * Checks user's authorisation data and returns path to user folder on server
+     */
     public static String clientLogin(String login, String pass, AuthController authCtl) {
 
         boolean authRes = authCtl.checkUser(login, pass);
@@ -21,22 +28,18 @@ public static String userLogin;
             File folder = new File(path);
             if (!folder.exists()) {
                 if (!folder.mkdir()) {
-                    /*todo: make an exception */
-                    System.out.println("Not possible to create a client folder");
-                    return "FOLDER_ERR";
+                    return MsgLib.MsgType.FER.toString();
                 }
             } else {
                 userLogin = login;
                 return path;
             }
         }
-        return "AUTH_FAILED";
+        return MsgLib.MsgType.ATF.toString();
     }
 
-    /**
+    /*
      * Checks content of user's folder and writes list of files in "login".tmp file on the server
-     * @param userFolder
-     * @return
      */
     public static File getFolderContent (String userFolder, String login) throws IOException {
         String fileSize;
@@ -45,11 +48,10 @@ public static String userLogin;
         File dir = new File(userFolder);
         File tmp = new File (login + ".tmp");
 
+        // if user folder not found ot empty
         if (!dir.isDirectory() || Objects.requireNonNull(dir.listFiles()).length == 0){
-            System.out.println("Not possible to find user folder on server");
             return null;
         }
-
 
         fileWriter = new FileWriter(tmp);
         for (File item : Objects.requireNonNull(dir.listFiles())) {
@@ -60,6 +62,7 @@ public static String userLogin;
                 } else{
                     fileSize = Long.toString(item.length()/(1024)) + " Kb";
                 }
+                // format for the file "last modified" date and time
                 SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
 
                 String strFile = item.getName() + MsgLib.DELIMITER + fileSize + MsgLib.DELIMITER
@@ -72,14 +75,20 @@ public static String userLogin;
         return tmp;
     }
 
+    /*
+     * Renames file upon the user's request
+     */
     public static boolean renameFile (String oldName, String newName, String login){
         File oldFile = Paths.get(Settings.S_FOLDER + "/" + login + "/" + oldName).toFile();
         File newFile = Paths.get(Settings.S_FOLDER + "/" + login + "/" + newName).toFile();
         return  oldFile.renameTo(newFile);
     }
 
+    /*
+     * Deletes file upon the user's request
+     */
     public static boolean deleteFile (String delName){
         File delFile = Paths.get(Settings.S_FOLDER + "/" + userLogin + "/" + delName).toFile();
-        return  delFile.delete();
+        return delFile.delete();
     }
 }
