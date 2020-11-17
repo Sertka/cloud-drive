@@ -15,7 +15,7 @@
       <Label id="passLbl" layoutX="82.0" layoutY="164.0" text="Пароль:" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="164.0" />
       <TextField fx:id="loginTFiled" layoutX="80.0" layoutY="122.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="122.0" />
       <PasswordField fx:id="passTFiled" layoutX="80.0" layoutY="186.0" prefHeight="27.0" prefWidth="240.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="186.0" />
-      <Label fx:id="lblMsg" alignment="CENTER" layoutX="80.0" layoutY="250.0" prefHeight="27.0" prefWidth="240.0" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="lblMsg" alignment="CENTER" layoutX="80.0" layoutY="250.0" prefHeight="43.0" prefWidth="240.0" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font></Label>

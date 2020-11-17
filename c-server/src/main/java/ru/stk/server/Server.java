@@ -8,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.stk.common.Settings;
 
 /**
@@ -16,11 +18,14 @@ import ru.stk.common.Settings;
 public class Server {
     public AuthController authCtl;
 
+    private static final Logger logger = LogManager.getLogger(AuthController.class);
+
     public void run() throws Exception {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
+            logger.info("Server started");
             authCtl = new AuthController();
             authCtl.init();
             ServerBootstrap b = new ServerBootstrap();
@@ -32,7 +37,7 @@ public class Server {
                             ch.pipeline().addLast(new OutHandler(), new MainHandler(authCtl));
                         }
                     });
-            
+
             ChannelFuture f = b.bind(Settings.PORT).sync();
             f.channel().closeFuture().sync();
         } finally {

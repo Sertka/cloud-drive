@@ -3,6 +3,7 @@ package ru.stk.client;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -87,7 +88,6 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
 
             // file successfully downloaded - DLS
             if (curState == State.IDLE & msgString.equals(MsgLib.MsgType.DLS.toString())) {
-                logger.info("File downloaded");
                 mfx.fileDownloaded();
             }
 
@@ -127,7 +127,8 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                     fileSaveStream = new BufferedOutputStream
                             (new FileOutputStream(Settings.C_FOLDER + "/" +fileName));
                     curState = State.FILE_LEN;
-                    logger.info("Start file receiving - " + fileName);
+                    if (!(fileName.equals(Client.getLogin() + ".tmp"))) {
+                    logger.info("Start file receiving - " + fileName);}
                 }
             }
 
@@ -146,12 +147,14 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
                     inFileLength++;
                     if (fileLength == inFileLength) {
                         curState = State.IDLE;
-                        logger.info("File is successfully received and saved - " + fileName);
+
                         fileSaveStream.close();
                         //if temporary file with user file list received - update file list on main form
-                        if (fileName.equals(Client.getLogin() + ".tmp")){
+                        if (fileName.equals(Client.getLogin() + ".tmp")) {
                             mfx.fillFileTable(Client.prepareFileList());
-                        }
+                        } else {
+                            logger.info("File is successfully received and saved - " + fileName);
+                            }
                         break;
                     }
                 }
@@ -166,10 +169,10 @@ public class ClientInHandler extends ChannelInboundHandlerAdapter {
      * Processes Netty exceptions
      */
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
         ctx.close();
         logger.error(cause.getMessage());
-        MsgBox.showErrorMsg(mainScene, cause.getMessage());
+        Platform.runLater(() ->MsgBox.showErrorMsg(mainScene, cause.getMessage()));
     }
 }
