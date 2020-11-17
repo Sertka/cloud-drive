@@ -11,8 +11,8 @@ import java.nio.file.Path;
 
 public class FileSender {
     public static void sendFile(Path path, Channel channel, ChannelHandlerContext ctx,ChannelFutureListener finishListener) throws IOException {
-        FileRegion region = new DefaultFileRegion(path.toFile(), 0, Files.size(path));
 
+        FileRegion region = new DefaultFileRegion(path.toFile(), 0, Files.size(path));
 
         ByteBuf buf = null;
         byte[] msgBytes = MsgLib.MsgType.FLE.toString().getBytes(StandardCharsets.UTF_8);
@@ -36,25 +36,26 @@ public class FileSender {
         //channel.writeAndFlush(buf);
 
 
-        if (channel == null & ctx != null){
-            ChannelFuture transferOperationFuture = ctx.writeAndFlush(region);
-            if (finishListener != null) {
-                transferOperationFuture.addListener(finishListener);
-            }
-        }else if (channel != null & ctx == null){
-            ChannelFuture transferOperationFuture = channel.writeAndFlush(region);
-            if (finishListener != null) {
-                transferOperationFuture.addListener(finishListener);
-            }
+        ChannelFuture transferOperationFuture;
+        if (isServer (channel)){
+            transferOperationFuture = ctx.writeAndFlush(region);
+        }else {
+            transferOperationFuture = channel.writeAndFlush(region);
+        }
+        if (finishListener != null) {
+            transferOperationFuture.addListener(finishListener);
         }
     }
 
-
     private static void send(Channel channel, ChannelHandlerContext ctx,  ByteBuf buf){
-        if (channel == null & ctx != null){
+        if (isServer(channel)){
             ctx.writeAndFlush(buf);
-        }else if (channel != null & ctx == null){
+        }else {
             channel.writeAndFlush(buf);
         }
+    }
+
+    private static boolean isServer(Channel channel){
+        return channel == null;
     }
 }

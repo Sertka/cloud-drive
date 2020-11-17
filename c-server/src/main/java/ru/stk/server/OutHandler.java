@@ -1,10 +1,13 @@
 package ru.stk.server;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 import io.netty.channel.*;
 import ru.stk.common.FileSender;
+import ru.stk.common.MsgLib;
 
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 
 public class OutHandler extends ChannelOutboundHandlerAdapter {
@@ -16,17 +19,15 @@ public class OutHandler extends ChannelOutboundHandlerAdapter {
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        //String path = (String)msg;
-/*
-        String str = (String)msg;
-        byte[] arr = str.getBytes();
-        ByteBuf buf = ctx.alloc().buffer(arr.length);
-        buf.writeBytes(arr);
-        ctx.writeAndFlush(buf);*/
-        String file;
-        file = msg.toString();
 
-       FileSender.sendFile(Paths.get(file), null, ctx, new ChannelFutureListener() {
+        String message;
+        message = msg.toString();
+
+        if (message.equals(MsgLib.MsgType.EMP.toString()) ) {
+            sendMessage(message, ctx);
+        }
+
+       FileSender.sendFile(Paths.get(message), null, ctx, new ChannelFutureListener() {
             @Override
             public void operationComplete(ChannelFuture future) throws Exception {
                 if (!future.isSuccess()) {
@@ -40,7 +41,14 @@ public class OutHandler extends ChannelOutboundHandlerAdapter {
         });
 
     }
+    private void sendMessage(String msg, ChannelHandlerContext ctx){
 
+        ByteBuf buf = null;
+        byte[] msgBytes = msg.getBytes(StandardCharsets.UTF_8);
+        buf = ByteBufAllocator.DEFAULT.directBuffer(msgBytes.length);
+        buf.writeBytes(msgBytes);
+        ctx.writeAndFlush(buf);
+    }
 
 
 }

@@ -13,22 +13,25 @@ import ru.stk.common.Settings;
 import java.util.concurrent.CountDownLatch;
 
 public class Server {
+    public AuthController authCtl;
 
     public void run() throws Exception {
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
+            authCtl = new AuthController();
+            authCtl.init();
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast( new OutHandler(), new MainHandler());
+                            ch.pipeline().addLast(new OutHandler(), new MainHandler(authCtl));
                         }
                     });
-
+            
             ChannelFuture f = b.bind(Settings.PORT).sync();
             f.channel().closeFuture().sync();
         } finally {
